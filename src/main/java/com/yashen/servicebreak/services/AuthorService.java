@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface AuthorService {
     Author addOrUpdate(Author author);
     List<Author> addAllWrites(List<Author> authorList);
-    public List<Author> getAuthors();
-    public Optional<Author> getSelectedWrite(Long id);
-    public void deleteWrite(Long id);
+    List<Author> getAuthors();
+    Optional<Author> getSelectedWrite(Long id);
+    void deleteWrite(Long id);
 }
