@@ -44,4 +44,23 @@ public class AuthorController {
         authorService.deleteWrite(id);
         return "204 Deleted";
     }
+    //                  Experimental  code below                          //
+
+    @GetMapping("/getAuthor/{id}")
+    public Author getAuthorViaExperimentalRoute(@PathVariable Long id){
+        return authorService.fetchAuthor(id);
+    }
+
+    @PutMapping("/updateExtension/{id}")
+    public Author updateAuthorExtension(@PathVariable Long id,@RequestBody Author author){
+        return authorService.updateAuthorExtension(id,author);
+    }
+
+    @GetMapping("/author/{name}")
+    public Author fetchAuthorByName(@PathVariable("name") String authorName){
+        return authorService.fetchAuthorByName(authorName);
+
+    }
+
+
 }

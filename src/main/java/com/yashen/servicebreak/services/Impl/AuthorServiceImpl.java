@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -40,4 +41,32 @@ public class AuthorServiceImpl implements AuthorService {  // extends is for ext
     public void deleteWrite(Long id){
         authorRepo.deleteById(id);
     }
+                                                                            // below code is experimental
+    @Override
+    public Author fetchAuthor(Long id) {
+        return authorRepo.findById(id).get();
+    }
+
+    @Override
+    public Author updateAuthorExtension(Long id, Author author) {
+         Author authorFromDb=authorRepo.findById(id).get();
+
+
+         if(Objects.nonNull(author.getName()) && !"".equalsIgnoreCase(author.getName())){
+             authorFromDb.setName(author.getName());
+         }
+
+         if(Objects.nonNull(author.getCountry()) && !"".equalsIgnoreCase(author.getName())){
+             authorFromDb.setCountry(author.getCountry());
+         }
+
+         return authorRepo.save(authorFromDb);
+    }
+
+    @Override
+    public Author fetchAuthorByName(String authorName) {
+        return authorRepo.findAuthorByNameIgnoreCase(authorName) ;
+    }
+
+
 }

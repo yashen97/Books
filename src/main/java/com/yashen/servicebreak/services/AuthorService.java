@@ -2,6 +2,7 @@ package com.yashen.servicebreak.services;
 
 import com.yashen.servicebreak.models.Author;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,4 +12,8 @@ public interface AuthorService {
     List<Author> getAuthors();
     Optional<Author> getSelectedWrite(Long id);
     void deleteWrite(Long id);
+    Author fetchAuthor(Long id);
+    Author updateAuthorExtension(Long id, Author author);
+
+    Author fetchAuthorByName(String authorName);
 }
