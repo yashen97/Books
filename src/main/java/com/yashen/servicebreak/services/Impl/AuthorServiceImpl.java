@@ -65,7 +65,7 @@ public class AuthorServiceImpl implements AuthorService {  // extends is for ext
 
     @Override
     public Author fetchAuthorByName(String authorName) {
-        return authorRepo.findAuthorByNameIgnoreCase(authorName) ;
+        return authorRepo.findAuthorByNameIgnoreCase(authorName);
     }
 
 
